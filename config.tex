@@ -35,16 +35,12 @@
 \ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
 
 \ifoot*{~
-    \makebox[145mm][r]{
-        \begin{minipage}[r]{200mm}
-            \color{vawiblue}\rule{192mm}{2pt}\\[\dimexpr-\baselineskip+1mm+1.5pt]
-            \color{vawilightblue}\rule{192mm}{2pt}
-            \pagemark
-        \end{minipage}
+    \makebox[\linewidth][r]{
+        \color{vawiblue}\rule[\baselineskip+1mm+1.5pt]{\paperwidth}{2pt}
+        \color{vawilightblue}\rule{\paperwidth}{2pt}
     }
-    \hfill
-    \begin{minipage}{1mm}
-        \color{vawiblue}\rule{40mm}{2pt}\\[\dimexpr-\baselineskip+1mm+1.5pt]
-        \color{vawilightblue}\rule{40mm}{2pt}
-    \end{minipage}
+}
+
+\ofoot*{
+    \colorbox{white}{\pagemark}
 }
