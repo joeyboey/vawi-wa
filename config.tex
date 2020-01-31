@@ -1,0 +1,50 @@
+\documentclass[
+    a4paper,                % DIN A4 Papiergröße
+    11pt,                   % Schriftgröße 11
+    oneside,                % Einseitig
+    headinclude,             % Kopfzeile wird für das Layout berücksichtigt
+    ]{scrreprt}
+
+% Auswahl von Zeichensatz, Sprache & Schriftart
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[default]{opensans}
+\usepackage[T1]{fontenc}
+
+% Formatierungsoptionen
+\usepackage[
+    left=3cm,
+    right=3cm,
+    top=2cm,
+    bottom=2cm,
+    headsep = \baselineskip,
+    footskip = \dimexpr2\baselineskip+3mm\relax,
+    includeheadfoot
+    ]{geometry}
+\usepackage[onehalfspacing]{setspace}
+
+% Farbdefinitionen
+\usepackage{xcolor}
+\definecolor{vawiblue}{HTML}{004C93}
+\definecolor{vawilightblue}{HTML}{4394E0}
+
+% Kopf- und Fußzeilen
+\usepackage{scrlayer-scrpage}
+\clearpairofpagestyles
+
+\ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
+
+\ifoot*{~
+    \makebox[145mm][r]{
+        \begin{minipage}[r]{200mm}
+            \color{vawiblue}\rule{192mm}{2pt}\\[\dimexpr-\baselineskip+1mm+1.5pt]
+            \color{vawilightblue}\rule{192mm}{2pt}
+            \pagemark
+        \end{minipage}
+    }
+    \hfill
+    \begin{minipage}{1mm}
+        \color{vawiblue}\rule{40mm}{2pt}\\[\dimexpr-\baselineskip+1mm+1.5pt]
+        \color{vawilightblue}\rule{40mm}{2pt}
+    \end{minipage}
+}
