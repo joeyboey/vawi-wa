@@ -1,0 +1,49 @@
+\documentclass[
+   fontsize=12pt,                % Schriftgroesse 12pt
+   a4paper,             % Layout fuer Din A4
+   ngerman,             % deutsche Sprache, global
+   oneside,            % einseitig
+   headinclude,         % Kopfzeile wird Seiten-Layouts mit beruecksichtigt
+   BCOR=12mm,            % Korrektur fuer die Bindung
+   DIV=14,               % DIV-Wert fuer die Erstellung des Satzspiegels, siehe scrguide
+   fleqn,               % fleqn: Glgen links (statt mittig)
+   %draft,               % Keine Bilder in der Anzeige, overfull hboxes werden angezeigt
+   appendixprefix,              %berschriften des Anhangs +"Anhang"
+  %chapterprefix,               %berschriften der Kapitel +"KAPITEL"
+   abstracton,
+   pdftex                       %Ueberschrift Zusammenfassung einschalten
+     ]{scrreprt}
+     
+     
+\input{setup/config.tex}
+
+     
+% Language 
+\usepackage[main=ngerman]{babel}
+\selectlanguage{ngerman}
+\usepackage{microtype}
+\def \setuppath {./setup/de}
+
+% Tableofcontents
+\renewcommand{\nomname}{Abk\"urzungsverzeichnis}
+\newcommand{\nomaltname}{Formelverzeichnis}
+\renewcommand*{\figureformat}{Abb.~\thefigure}
+\def\figureautorefname{Abb.}
+\renewcommand*{\tableformat}{Tab.~\thetable}
+\def\tableautorefname{Tab.}
+
+
+%Algorithmrename
+
+\floatname{algorithm}{Algorithmus}
+\algrenewcommand{\algorithmiccomment}[1]{\hskip1em\textcolor{gray!60}{$\rhd$ #1}}
+\renewcommand{\listalgorithmname}{Algorithmen}
+\def\algorithmautorefname{Alg.}
+
+%renames
+
+\renewcommand{\lstlistingname}{Code-Ausschnitt}
+\renewcommand{\lstlistlistingname}{Code-Ausschnitte}
+\def\lstlistingautorefname{Code-Ausschnitt}
+
+

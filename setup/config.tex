@@ -1,0 +1,297 @@
+% Raender: 3cm Seite, 2 cm oben & unten
+\usepackage{typearea}
+\areaset{150mm}{257mm}
+\usepackage[small,bf,up]{caption}  %nicer captions
+\renewcommand{\captionfont}{\small}
+\usepackage[hyphens]{url}
+%\usepackage{picins}
+\usepackage{ae}                 % Für PDF-Erstellung
+\usepackage{latexsym}			% schönere Symbole
+%\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{etex}
+
+% Zeichensätze
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % T1-kodierte Schriften, korrekte Trennmuster fuer Worte mit Umlauten
+%\usepackage[iso]{umlaute}
+
+\input{setup/metainfo.tex}
+   
+% Hyperref
+\usepackage{hyperref}
+\definecolor{darkblue}{rgb}{0,.05,.54}
+\definecolor{darkgreen}{rgb}{0,.54,.05}
+\definecolor{vawiblue}{rgb}{.25,.48,.67}
+\definecolor{vawigrayblue}{rgb}{.41,.47,.53}
+\makeatletter
+\hypersetup{pdftitle={\@title}, pdfauthor={\@author}, pdfsubject={\@subject}, colorlinks=true, breaklinks=true, linkcolor=black, menucolor=darkblue, urlcolor=darkblue, citecolor=darkblue, filecolor=darkblue}
+\makeatother
+\urlstyle{same}
+\usepackage[all]{hypcap}
+
+
+% Mathe und Formeln
+\usepackage{calc}
+\usepackage[centertags]{amsmath}
+\usepackage{amssymb,amsthm,amsfonts}
+\usepackage{cancel}  %%druchstreichen von Formeln
+
+% Programmieren mit Latex
+\usepackage{ifthen}
+
+% Zeilenabstand
+%%   1,1-facher Zeilenabstand   %%
+\usepackage{setspace}
+\setstretch{1.5}
+%\setlength{\parindent}{0em}
+
+\usepackage{dirtree}   %setzen von baumstrukturen
+\usepackage{bbding}    % Hände
+
+\usepackage{paralist}      % kleinere Anstände bei enums und itemizes möglich
+
+%%   Fuer anspruchsvolle Tabellen   %%
+\usepackage{longtable, colortbl}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{multicol, multirow}
+
+%%  Für Grafiken %%
+\usepackage[pdftex]{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows,shapes,fit,positioning,decorations.pathmorphing,backgrounds,shadows}
+%\tikzstyle{line} = [thick]
+
+%% Listings %%
+%% Code Highlighting
+\definecolor{mygray}{gray}{.75}
+\usepackage{listings} 
+\lstset{numbers=left, numberstyle=\tiny, numbersep=6pt} 
+\lstset{language=Python}
+\lstset{classoffset=1, morekeywords={mycontext}, keywordstyle=\color{darkgreen}, classoffset=0, keywordstyle=\color{darkblue}}
+\lstset{basicstyle=\small, showstringspaces=false, commentstyle=\color{mygray}, breaklines=true, captionpos=b}
+
+%%  Zur Darstellung des Euro-Symbols   %%
+\usepackage{eurosym, wasysym}
+
+%%   Fuer Bibtex nach APA Style (American Psychology Association)   %%
+%nun vawi-main.tex
+
+% Seiten im Querformat
+\usepackage{lscape}
+
+% Code-Hervorhebung
+% Quellcode
+\usepackage{verbatim}            % Quellcode einbinden (\verbatiminput) standardpaket
+\usepackage{moreverb} 
+% PseudoCode
+\usepackage[chapter]{algorithm}
+\usepackage{algpseudocode}
+%\usepackage{algorithmicx}
+
+%%   intoc zur Aufnhame des Abkuerzungs- und Symbolverzeichnisses ins Inhaltsverzeichnis  
+\usepackage[intoc]{nomencl}
+\setlength{\nomlabelwidth}{.20\hsize}
+%\renewcommand{\nomlabel}[1]{#1 \dotfill}
+\setlength{\nomitemsep}{-\parsep}
+\makenomenclature
+\newcommand{\nomaltpreamble}{}
+\newcommand{\nomaltpostamble}{}
+\newcommand{\usetwonomenclatures}{\nomenclature[\switchnomitem]{}{}}
+\newcommand{\switchnomitem}{R}
+\renewcommand{\nomgroup}[1]{%
+\ifthenelse{\equal{#1}{\switchnomitem}}{\switchnomalt}{}}
+\newcommand{\switchnomalt}{%
+\end{thenomenclature}
+\newpage
+\renewcommand{\nomname}{\nomaltname}
+\renewcommand{\nompreamble}{\nomaltpreamble}
+\renewcommand{\nompostamble}{\nomaltpostamble}
+\begin{thenomenclature}
+}
+
+
+
+%%   Hervorhebung der Abkuerzungsbuchstaben   %%
+\usepackage[normalem]{ulem}
+\newcommand{\m}[1]{\uline{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                   COMMAND SETUP                                       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%#1 Breite
+%#2 Datei (liegt im image Verzeichnis)
+%#3 Beschriftung
+%#4 Label fuer Referenzierung
+\newcommand{\image}[4]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=#1]{image/#2}
+\caption{#3}
+\label{#4}
+\end{figure}
+}
+
+%#1 Datei (liegt im graphic Verzeichnis)
+%#2 Beschriftung
+%#3 Label fuer Referenzierung
+\newcommand{\tikzimage}[3]{%
+\begin{figure}[H]%
+\centering%
+\input{graphic/#1.tikz}%
+\caption{#2}%
+\label{#3}%
+\end{figure}
+}
+
+%#1 Datei (liegt im graphic Verzeichnis)
+%#2 Beschriftung
+%#3 Label fuer Referenzierung
+%#4 Skalierungsfaktor
+\newcommand{\scaletikzimage}[4]{%
+\begin{figure}[H]%
+\centering%
+\scalebox{#4}{%
+\input{graphic/#1.tikz}}%
+\caption{#2}%
+\label{#3}%
+\end{figure}
+}
+
+%#1 Breite
+%#2 Höhe
+%#2 Datei (liegt im image Verzeichnis)
+%#3 Beschriftung
+%#4 Label fuer Referenzierung
+\newcommand{\imagebh}[5]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=#1, height=#2]{image/#3}
+\caption{#4}
+\label{#5}
+\end{figure}
+}
+
+%#1 Breite
+%#2 Datei (liegt im image Verzeichnis)
+%#3 zugehörige Bildunterschrift
+%#4 Beschriftung
+%#5 Label fuer Referenzierung
+\newcommand{\mathimage}[5]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=#1]{image/#2}\\
+#3
+\caption{#4}
+\label{#5}
+\end{figure}
+}
+
+%#1 algorithm name
+%#2 algorithm label
+%#3 file name in code-folder
+\newcommand{\pseudo}[3]{%
+\small%
+\begin{algorithm}[H]%
+\caption{#1}%
+\label{#2}%
+\input{code/#3.tex}%
+\end{algorithm}%
+\normalsize%
+}
+
+%#1 Text der als todo dargestellt werden soll
+\newcommand{\todo}[1]{
+\begin{quote}
+\textcolor{red}{\textbf{TODO: #1}}
+\end{quote}
+}
+
+\newcommand{\rimage}[2]{
+\begin{figure}[H]
+\centering
+#1
+%\caption{#2}
+\end{figure}
+}
+
+\newcommand \rack {
+       {\LARGE $\square$}
+}
+
+\newcommand \deftab
+{\hspace{1.5cm}\=abcdfffefghijk\hspace{1cm}\=1\hspace{1.5cm}\=1\hspace{1.5cm}\=1\hspace{1.5cm}\=1\hspace{1.5cm}\=1\hspace{1.5cm}\=asdjadj\kill}
+
+\newcommand \einsbisfuenf
+{\> {\bf -2} \> {\bf -1} \> {\bf 0} \> {\bf 1} \> {\bf 2} \>}
+
+% #1 videofile
+% #2 scalefactor
+\newcommand{\video}[2]{%
+\includemovie[text={\includegraphics[scale=#2]{praesi/video/#1.png}}, autoplay, mouse=true, repeat=1]{}{}{praesi/video/#1.swf}}
+
+
+% Background Picture
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{
+\put(-15,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth, height=\paperheight,
+keepaspectratio]{image/deckblatt.pdf}%
+\vfill
+}}}
+
+\newcommand\HeaderPic{
+%\begin{picture}(0,0)%
+\put(290,771){\mbox{\scriptsize{\sffamily \color{vawiblue}\textbf{Virtueller Weiterbildungsstudiengang Wirtschaftsinformatik\color{black}}}}}%
+
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\centering
+\vspace{22.4mm}
+\noindent\makebox[\linewidth]{\color{vawiblue}\rule{2\paperwidth}{2.5pt}\color{black}}
+\vfill
+}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                 Kopf und Fusszeilen %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[automark, singlespacing=true]{scrlayer-scrpage}            % Kopf und Fusszeilen-Layout
+\usepackage{scrhack}
+\renewcommand*{\chapterpagestyle}{scrheadings} % Auch Chapters mit Kopfzeile
+\renewcommand{\headfont}{\normalfont\sffamily\itshape}    % Kolumnentitel serifenlos
+\renewcommand{\pnumfont}{\normalfont\sffamily}    % Seitennummern serifenlos
+\pagestyle{scrheadings}
+\addtolength{\headheight}{.8cm} %Abstand zu text
+\addtolength{\textheight}{-0.8cm}
+
+\ihead[]{
+\AddToShipoutPicture*{\HeaderPic}
+}
+\ohead[]{\includegraphics[width=24mm]{image/vawiheaderlogo.png}}
+%\chead[]{~\\[2mm]
+%\hfill \scriptsize \color{vawiblue}\textbf{Virtueller Weiterbildungsstudiengang Wirtschaftsinformatik\color{black}}}
+\chead[]{}
+\ofoot[]{}                       % Seitennummern in der Fusszeile loeschen
+\cfoot[]{}                       % Seitennummern in der Fusszeile loeschen
+\ifoot{~
+\makebox[145mm][r]{%
+\begin{minipage}[r]{200mm}%
+\color{vawiblue}\rule{192mm}{2pt}\color{black}\\[\dimexpr-\baselineskip+1mm+1.5pt]\color{vawigrayblue}\rule{192mm}{2pt}\color{black}\, \pagemark%
+\end{minipage}%
+}
+\hfill
+\begin{minipage}{1mm}
+\color{vawiblue}\rule{40mm}{2pt}\color{black}\\
+[\dimexpr-\baselineskip+1mm+1.5pt]
+\color{vawigrayblue}\rule{40mm}{2pt}\color{black}
+\end{minipage}
+} 

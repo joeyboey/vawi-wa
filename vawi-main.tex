@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%            Virtueller Masterstudiengang Wirtschaftsinformatik                %
+%                      Vorlage für \LaTeX -Dokumente                           %
+%               Erstellt von Linus Dietz (linus.dietz@uni-bamberg.de)          %
+%                                   April 2013                                 %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Kompilieren: %%%%
+% Um diese Datei korrekt zu kompilieren muss man nacheinander die Befehle
+% pdflatex vawi-main.tex | biber vawi-main.bcf | makeindex vawi-main.tex | makeindex vawi-main.nlo -s nomencl.ist -o vawi-main.nls | pdflatex vawi-main.tex | pdflatex vawi-main.tex
+
+% TODO: Information in setup/metainfo anpassen
+
+%%% SPRACHE & ART DER ARBEIT %%%
+% (ENTSPRECHENDES EINKOMMENTIEREN) %
+
+% ENGLISH MASTER'S THESIS 
+%\input{setup/en/commands.tex}
+
+% DEUTSCH MASTERARBEIT
+\input{setup/de/commands.tex}
+     
+%% Zitierstil auswaehlen (in Ruecksprache mit Dozenten)
+\usepackage{csquotes}
+\usepackage[style=ieee]{biblatex}%apa%mla%undWeitere
+\addbibresource{literatur/bib.bib}
+
+% TODO: Informationen f"ur die Titelseite in der soeben einkommentierten
+% commands.tex eintragen.
+
+\pgfplotsset{compat=1.15}
+\begin{document}
+% 1.1-facher Zeilenabstand für die Titelseite und die Verzeichnisse
+\setstretch{1.1}
+% % Titelseite
+\input{setup/titelseite}
+% % Seitenlayout (Kopf- & Fusszeilen)
+\pagestyle{scrheadings}
+% R"omische Seiternumerierung der Verzeichnisse
+\pagenumbering{Roman}
+% Sperrvermerk
+\input{setup/sperrvermerk}
+% Inhaltsverzeichnis
+\tableofcontents \newpage
+% Das Abbildungsverzeichnis ist optional. Loeschen Sie dieses Verzeichnis, wenn
+% keine Bilder in Ihrer Arbeit vorhanden sind.
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures \newpage
+% Das Tabellenverzeichnis ist optional. Loeschen Sie dieses Verzeichnis, wenn
+% keine Tabellen in Ihrer Arbeit vorhanden sind.
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables \newpage
+% Die Liste der Algorithmen ist optional. Loeschen Sie dieses Verzeichnis, wenn
+% keine Beschreibung von Algorithmen in Ihrer Arbeit vorhanden sind.
+\addcontentsline{toc}{chapter}{\listalgorithmname}
+\listofalgorithms \newpage
+% Das Abkuerzungsverzeichnis ist optional.
+\usetwonomenclatures
+% Das Symbolverzeichnis ist optional.
+\printnomenclature
+\makenomenclature
+
+\cleardoubleemptypage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+% 1.5-facher Zeilenabstand für die Arbeit
+\setstretch{1.5}
+\chapter{Einleitung}\label{cha:ein}
+Dies ist eine Vorlage für Dokumente, die Sie im Laufe ihres Masterstudiums in
+\LaTeX ~abgeben.
+
+
+Weiter gehts in \autoref{cha:haupt}.
+
+\chapter{Hauptteil}\label{cha:haupt}
+
+\section{Bilder und Grafiken}\label{sec:grafiken}
+\subsection{Abbildungen}\label{subsec:bilder}
+Alle Abbildungen und sonstigen Elemente, die in Verzeichnissen geführt werden,
+müssen gemäß der im Buchdruck üblichen Form erscheinen. Die Bilder befinden sich
+im Image-Ordner und lassen sich mit\\ \textbackslash image\{Breite\}\{Datei im
+Image-Verzeichnis\}\{Beschriftung\}\{Label\} einbinden.
+\image{3cm}{logo.png}{Uni-Logo}{img:uni} Die Referenzierung erfolgt mittels
+\textbackslash autoref\{Label\}, also z.B.
+\autoref{img:uni}. Wenn au\ss erdem die richtige Seite mitreferenziert werden
+soll, kann man zus\"atzlich mit \textbackslash pageref\{Label\} die richtige
+Seite referenzieren: z.B.: \autoref{img:uni} auf Seite \pageref{img:uni}.\\
+Für die Verweise im Text auf Abbildungen, Tabellen (z.B. \autoref{tab:tab1}) und
+Algorithmen (z.B. \autoref{lst:mean}) werden nur die entsprechenden Nummern
+verwendet, nicht dagegen Formulierungen wie ``die folgende Abbildung''.
+\subsection{Grafiken mit TikZ}
+Grafiken im TikZ-Framework lassen sich mit dem Befehl \textbackslash
+scaletikzimage\{Datei im Image
+Verzeichnis\}\{Beschriftung\}\{Label\}\{Skalierungsfaktor\} einbinden.
+\scaletikzimage{tikz}{TikZ-Grafik}{img:tikz}{0.9}
+Eine Anleitung zu TikZ finden Sie hier:\\
+\url{http://www.tn-home.de/TUGDD/Stuff/TikZ_final.pdf}
+
+\section{Tabellen}
+Tabellen lassen sich mit dem Environment\\
+\textbackslash begin\{longtable\}[H h t b c]\{Spaltendefinitionen\} ...\\
+\textbackslash caption\{Tabellen"uberschrift\}\\
+Tabelleninhalt\\
+\textbackslash caption\{Tabellenunterschrift\}\\
+\textbackslash label\{Labelname\}\\
+\textbackslash end\{longtable\}\\
+ definieren
+ 
+\begin{longtable}[H]{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+\hline
+A&B&C\\
+\hline
+\caption{Tabelle 1}
+\label{tab:tab1}
+\end{longtable}
+
+\section{Code-Ausschnitte}
+Pseudo-Code Ausschnitte lassen sich mit \textbackslash pseudo\{Name des
+Algorithmus\}\{Label\}\ {Datei im Code-Verzeichnis\} einbinden.
+\pseudo{Mittelwert}{lst:mean}{code}
+
+\section{Zitate}
+Mit \textbackslash nocite\{*\} lassen sich alle Einträge in der Bibliography
+ausgeben.
+ Mit \textbackslash cite[S. xx]\{Key\} lassen sich Zitate einfügen.
+  Z.B. \autocite[S. 234]{Ferstl.2011} \nocite{*} Oder einfach \autocite{Ferstl.1979}.
+  
+\section{Abkürzungen und Symbole}
+\subsection{Abkürzungen}
+Abkürzungen können mit \textbackslash nomenclature\{Abk\}\{\textbackslash
+m\{Abk\}ürzung\} \nomenclature{Abk}{\m{Abk}ürzung} angegeben werden. Diese
+werden alphabetisch sortiert in ein Abkürzungsverzeichnis aufgenommen.
+\nomenclature{B2B}{Business to Business}
+% Vorsicht: Sie tauchen nicht im Fliesstext auf!
+\subsection{Symbole und Formeln}
+Symbole/Formeln können mit \textbackslash nomenclature[s]\{$E=mc^2$\}\{Energie\}
+\nomenclature[s]{$E=mc^2$}{Energie} in das Symbolverzeichnis aufgenommen werden.
+\nomenclature[s]{$q(p_{FT})=\frac{a-p_{FT}}{b}$}{Nachfragefunktion}
+
+\cleardoubleemptypage
+
+% 1.1-facher Zeilenabstand für das Literaturverzeichnis und den Anhang
+\setstretch{1.1}
+
+% Einbinden und Ausgeben des Literaturverzeichnisses
+\printbibliography
+\cleardoubleemptypage
+
+\appendix
+\setstretch{1.5}
+\chapter{Anhang}
+\setstretch{1.1}
+Gru\ss ~und Dank an Donald Knuth \& Leslie Lamport!
+
+\cleardoubleemptypage 
+
+\input{setup/erklaerung}
+\end{document}
