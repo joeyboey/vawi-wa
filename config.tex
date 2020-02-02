@@ -31,16 +31,8 @@
 % Kopf- und Fußzeilen
 \usepackage{scrlayer-scrpage}
 \clearpairofpagestyles
-
+\newpairofpagestyles{cover}{%
+    \ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
+}
 \ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
-
-\ifoot*{~
-    \makebox[\linewidth][r]{
-        \color{vawiblue}\rule[\baselineskip+1mm+1.5pt]{\paperwidth}{2pt}
-        \color{vawilightblue}\rule{\paperwidth}{2pt}
-    }
-}
-
-\ofoot*{
-    \colorbox{white}{\pagemark}
-}
+\ofoot*{\pagemark}
