@@ -6,12 +6,25 @@
 \input{config.tex}
 
 % Setzen der globalen Variablen
-\title{Wissenschaftliches Arbeiten}
-\author{Joe Schwerdtner}
-\date{1. Januar 2020}
+\renewcommand\title{Wissenschaftliches Arbeiten}
+\renewcommand\author{Joe Schwerdtner}
+\renewcommand\date{\today}
+
+% Adresse des Verfassers
+\newcommand{\street}{Musterstr. 3}
+\newcommand{\city}{40477 Düsseldorf}
+\newcommand{\mtrnr}{12345678}
+
+% Gutachter
+\newcommand{\firstexpert}{Prof. Dr. Max Mustermann, Universität Duisburg-Essen}
+\newcommand{\secondexpert}{Prof. Dr. Maxine Mustermann, Universität Bamberg}
+
+% Abgabe
+\newcommand{\submissiondate}{31.03.2020}
+\newcommand{\submissionsemester}{Wintersemester 19/20}
 
 \begin{document}
-    \maketitle
+    \input{templates/cover.tex}
     \tableofcontents
 
     \section{Einleitung}
