@@ -1,22 +1,24 @@
 \begin{titlepage}
-    \thispagestyle{cover}
+    \thispagestyle{headeronly}
     \setstretch{1.5}
     \begin{flushleft}
         \noindent\huge\textbf{Universität Duisburg-Essen}
         \\
         \large Virtueller Weiterbildungsstudiengang Wirtschaftsinformatik (VAWi)
         \\[20mm]
-        \Large Masterarbeit
+        \Large \typeofwork
     \end{flushleft}
     \Large\textbf{\title}\\
     \vfill
     \noindent\normalsize Vorgelegt der Fakultät für Wirtschaftswissenschaften der Universität Duisburg-Essen
     \begin{flushleft}
         \begin{tabular}{@{}l p{10cm}}
-            Verfasser: & \textbf{\author} \newline \street \newline \city \newline \mtrnr \\[10mm]
+            Verfasser: & \textbf{\author} \newline \zipcode \space \street \newline \city \newline \mtrnr \\[10mm]
             Erstgutachter: & \firstexpert \\
-            Zweitgutachter: & \secondexpert \\[10mm]
-            Abgabe: & \submissiondate \space \textbackslash \space \submissionsemester
+            \if\secondsubmission 1
+                Zweitgutachter: & \secondexpert
+            \fi
+            \\[10mm]Abgabe: & \submissiondate \space \textbackslash \space \submissionsemester
         \end{tabular}
     \end{flushleft}
 \end{titlepage}
