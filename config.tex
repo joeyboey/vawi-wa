@@ -11,6 +11,9 @@
 \usepackage[default]{opensans}
 \usepackage[T1]{fontenc}
 
+% Ermöglicht die Zählung der Abbildungen und Tabellen
+\usepackage[figure, table]{totalcount}
+
 % Formatierungsoptionen
 \usepackage[
     left=3cm,
@@ -31,7 +34,7 @@
 % Kopf- und Fußzeilen
 \usepackage{scrlayer-scrpage}
 \clearpairofpagestyles
-\newpairofpagestyles{cover}{%
+\newpairofpagestyles{headeronly}{%
     \ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
 }
 \ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}

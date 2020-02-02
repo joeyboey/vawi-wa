@@ -5,14 +5,21 @@
 % Importieren aller Voreinstellung
 \input{config.tex}
 
-% Setzen der globalen Variablen
+% Boolean Variablen
+\def\secondsubmission{1}
+\def\confidential{1}
+
+% Allgemeine Variablen
 \renewcommand\title{Wissenschaftliches Arbeiten}
-\renewcommand\author{Joe Schwerdtner}
+\renewcommand\author{Max Mustermann}
 \renewcommand\date{\today}
+\newcommand{\typeofwork}{Masterarbeit}
+\newcommand{\company}{Muster GmbH}
 
 % Adresse des Verfassers
 \newcommand{\street}{Musterstr. 3}
-\newcommand{\city}{40477 Düsseldorf}
+\newcommand{\zipcode}{40455}
+\newcommand{\city}{Musterstadt}
 \newcommand{\mtrnr}{12345678}
 
 % Gutachter
@@ -23,12 +30,31 @@
 \newcommand{\submissiondate}{31.03.2020}
 \newcommand{\submissionsemester}{Wintersemester 19/20}
 
+% Dokument
 \begin{document}
+    % Nummerierung bis zum Hauptteil römisch
+    \pagenumbering{Roman}
+    % Einfügen der Titelseite
     \input{templates/cover.tex}
+    % Falls ein Sperrvermerk erfoderlich ist, wird er eingefügt
+    \if\confidential 1
+        \input{templates/non_disclosure_agreement.tex}
+    \fi
+    % Inhaltsverzeichnis
     \tableofcontents
-
-    \section{Einleitung}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    \subsection{Formeln}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    % Falls Abbildungen vorhanden sind, wird ein Verzeichnis eingefügt
+    \if\totalfigures
+        \listoffigures
+    \fi
+    % Falls Tabellen vorhanden sind, wird ein Verzeichnis eingefügt
+    \if\totaltables
+        \listoftables
+    \fi
+    \newpage
+    % Wechsel der Seitennummerierung auf arabische Zahlen
+    \pagenumbering{arabic}
+    % Hauptteil der Arbeit
+    \input{content.tex}
+    % Eidesstattliche Versicherung
+    \input{templates/declaration_on_oath.tex}
 \end{document}
