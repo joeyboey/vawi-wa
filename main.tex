@@ -31,6 +31,10 @@
 \newcommand{\submissiondate}{31.03.2020}
 \newcommand{\submissionsemester}{Wintersemester 19/20}
 
+% Zitierstiel & Bib-Quelle
+\usepackage[notes,short,backend=biber]{biblatex-chicago}
+\addbibresource{bibliography.bib}
+
 % Dokument
 \begin{document}
     % Nummerierung bis zum Hauptteil römisch (Großbuchstaben)
@@ -56,6 +60,9 @@
     \pagenumbering{arabic}
     % Hauptteil der Arbeit
     \input{content.tex}
+    % Literaturverzeichnis
+    \printbibliography
+    \thispagestyle{headeronly}
     % Eidesstattliche Versicherung
     \input{templates/declaration_on_oath.tex}
 \end{document}
