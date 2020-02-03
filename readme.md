@@ -72,7 +72,10 @@ Abgabe |
 
 Neben den Text-Variablen gibt es noch 2 Boolean Variablen, die bestimmte Inhalte steuern. Dabei gilt: 
 
-`1 == true; 0 == false`
+`1 == true`
+
+`0 == false`
+
 | Variable | Bedeutung |
 --- | ---
 `\secondsubmission` | Ein-/Ausblenden des zweiten Gutachters
