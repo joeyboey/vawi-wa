@@ -4,4 +4,8 @@
 *.log
 *.synctex.gz
 *.toc
+*.bbl
+*.bcf
+*.blg
+*.run*
 alte-quelle/
