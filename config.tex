@@ -15,6 +15,7 @@
 \usepackage[figure, table]{totalcount}
 
 % Formatierungsoptionen
+% Allgemeine Seiteneinrichtung
 \usepackage[
     left=3cm,
     right=3cm,
@@ -25,6 +26,9 @@
     includeheadfoot
     ]{geometry}
 \usepackage[onehalfspacing]{setspace}
+
+% Entfernen des großen Abstands über Chaptern
+\renewcommand*\chapterheadstartvskip{\vspace*{-\topskip}}
 
 % Farbdefinitionen
 \usepackage{xcolor}
