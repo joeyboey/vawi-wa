@@ -53,6 +53,7 @@ Die Variablen werden, wie bereits erwähnt in der `main.tex` Datei gesetzt. Dazu
 --- | ---
 Allgemeines |
 `\title` | Titel der Arbeit
+`\titleEN` | Englischer Titel der Arbeit
 `\date` | Datum der Abgabe (Standard ist `\today`)
 `\typeofwork` | Art der Arbeit (z.B. Masterarbeit, Projektarbeit)
 `\company` | Unternehmen, falls die Arbeit einen Kotext hat
