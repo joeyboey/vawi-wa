@@ -14,6 +14,13 @@
 % Ermöglicht die Zählung der Abbildungen und Tabellen
 \usepackage[figure, table]{totalcount}
 
+% Ermöglicht das Einbindden von Bildern
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+% Ermöglicht die Forcierung der Platzierung von Floats
+\usepackage{float}
+
 % Formatierungsoptionen
 % Allgemeine Seiteneinrichtung
 \usepackage[
@@ -26,6 +33,9 @@
     includeheadfoot
     ]{geometry}
 \usepackage[onehalfspacing]{setspace}
+% Paragraphendefinition
+\setlength{\parindent}{0em}
+\setlength{\parskip}{.6em}
 
 % Entfernen des großen Abstands über Chaptern
 \renewcommand*\chapterheadstartvskip{\vspace*{-\topskip}}

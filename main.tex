@@ -16,6 +16,7 @@
 \newcommand{\typeofwork}{Masterarbeit}
 \newcommand{\company}{Muster GmbH}
 \newcommand{\uni}{Universität Duisburg-Essen}
+\newcommand{\study}{Virtueller Weiterbildungsstudiengang Wirtschaftsinformatik (VAWi)}
 
 % Daten des Autors
 \renewcommand\author{Max Mustermann}
@@ -36,24 +37,63 @@
 \usepackage[notes,short,backend=biber]{biblatex-chicago}
 \addbibresource{bibliography.bib}
 
+% Formatierung der Fußnoten
+\deffootnote{1.5em}{1em}{
+  \makebox[1.5em][l]{\thefootnotemark}
+}
+
+% Durchgängige Zählung von Fußnoten, Abbildungen und Tabellen
+\counterwithout{footnote}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% Literaturverzeichnis ohne Seitenzahlen
+\renewcommand{\bibsetup}{\pagestyle{headeronly}}
+
+% Ermöglicht Erstellung von Diagrammen
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\pgfplotsset{
+    discard if/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+                \def\pgfmathresult{inf}
+            \fi
+        }
+    },
+    discard if not/.style 2 args={
+        x filter/.code={
+            \edef\tempa{\thisrow{#1}}
+            \edef\tempb{#2}
+            \ifx\tempa\tempb
+            \else
+                \def\pgfmathresult{inf}
+            \fi
+        }
+    }
+}
+
 % Dokument
 \begin{document}
     % Nummerierung bis zum Hauptteil römisch (Großbuchstaben)
     \pagenumbering{Roman}
     % Einfügen der Titelseite
     \input{templates/cover.tex}
-    % Falls ein Sperrvermerk erfoderlich ist, wird er eingefügt
+    % Falls ein Sperrvermerk erforderlich ist, wird er eingefügt
     \if\confidential 1
         \input{templates/non_disclosure_agreement.tex}
     \fi
     % Inhaltsverzeichnis
     \tableofcontents
     % Falls Abbildungen vorhanden sind, wird ein Verzeichnis eingefügt
-    \if\totalfigures
+    \ifnum\totalfigures>0
         \listoffigures
     \fi
     % Falls Tabellen vorhanden sind, wird ein Verzeichnis eingefügt
-    \if\totaltables
+    \ifnum\totaltables>0
         \listoftables
     \fi
     \newpage
