@@ -8,4 +8,7 @@
 *.bcf
 *.blg
 *.run*
-alte-quelle/
+*.synctex*
+*.lof
+*.lot
+*.rtf
