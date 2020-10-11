@@ -1,6 +1,7 @@
 % VAWi LaTeX Vorlage
 % Erstellt von Joe Schwerdtner
 % Inspiriert von der Vorlage von Linus Dietz
+% pandoc export mit: pandoc main.tex -N --bibliography=bibliography.bib -o main.docx --reference-doc=pandoc-template.docx
 
 % Importieren aller Voreinstellung
 \input{config.tex}
@@ -78,32 +79,32 @@
 
 % Dokument
 \begin{document}
-    % Nummerierung bis zum Hauptteil römisch (Großbuchstaben)
-    \pagenumbering{Roman}
-    % Einfügen der Titelseite
-    \input{templates/cover.tex}
-    % Falls ein Sperrvermerk erforderlich ist, wird er eingefügt
-    \if\confidential 1
-        \input{templates/non_disclosure_agreement.tex}
-    \fi
-    % Inhaltsverzeichnis
-    \tableofcontents
-    % Falls Abbildungen vorhanden sind, wird ein Verzeichnis eingefügt
-    \ifnum\totalfigures>0
-        \listoffigures
-    \fi
-    % Falls Tabellen vorhanden sind, wird ein Verzeichnis eingefügt
-    \ifnum\totaltables>0
-        \listoftables
-    \fi
-    \newpage
-    % Wechsel der Seitennummerierung auf arabische Zahlen
-    \pagenumbering{arabic}
-    % Hauptteil der Arbeit
-    \input{content.tex}
-    % Literaturverzeichnis
-    \printbibliography
-    \thispagestyle{headeronly}
-    % Eidesstattliche Versicherung
-    \input{templates/declaration_on_oath.tex}
+% Nummerierung bis zum Hauptteil römisch (Großbuchstaben)
+\pagenumbering{Roman}
+% Einfügen der Titelseite
+\input{templates/cover.tex}
+% Falls ein Sperrvermerk erforderlich ist, wird er eingefügt
+\if\confidential 1
+    \input{templates/non_disclosure_agreement.tex}
+\fi
+% Inhaltsverzeichnis
+\tableofcontents
+% Falls Abbildungen vorhanden sind, wird ein Verzeichnis eingefügt
+\ifnum\totalfigures>0
+    \listoffigures
+\fi
+% Falls Tabellen vorhanden sind, wird ein Verzeichnis eingefügt
+\ifnum\totaltables>0
+    \listoftables
+\fi
+\newpage
+% Wechsel der Seitennummerierung auf arabische Zahlen
+\pagenumbering{arabic}
+% Hauptteil der Arbeit
+\input{content.tex}
+% Literaturverzeichnis
+\printbibliography
+\thispagestyle{headeronly}
+% Eidesstattliche Versicherung
+\input{templates/declaration_on_oath.tex}
 \end{document}

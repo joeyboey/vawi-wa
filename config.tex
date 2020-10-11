@@ -3,7 +3,7 @@
     11pt,                   % Schriftgröße 11
     oneside,                % Einseitig
     headinclude,             % Kopfzeile wird für das Layout berücksichtigt
-    ]{scrreprt}
+]{scrreprt}
 
 % Auswahl von Zeichensatz, Sprache & Schriftart
 \usepackage[utf8]{inputenc}
@@ -31,8 +31,14 @@
     headsep = \baselineskip,
     footskip = \dimexpr2\baselineskip+3mm\relax,
     includeheadfoot
-    ]{geometry}
+]{geometry}
 \usepackage[onehalfspacing]{setspace}
+\emergencystretch 3em
+
+% Formatierung von Tabellen mit richtigem Zeilenabstand usw.
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{10pt}
+
 % Paragraphendefinition
 \setlength{\parindent}{0em}
 \setlength{\parskip}{.6em}
@@ -49,7 +55,7 @@
 \usepackage{scrlayer-scrpage}
 \clearpairofpagestyles
 \newpairofpagestyles{headeronly}{%
-    \ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
+    \ohead*{\includegraphics[scale=0.08]{vawi-logo}}
 }
-\ohead*{\textcolor{vawiblue}{\fontsize{36}{40}\selectfont\textbf{\textit{VAWi}}}}
+\ohead*{\includegraphics[scale=0.08]{vawi-logo}}
 \ofoot*{\pagemark}
