@@ -103,6 +103,10 @@ Die empfohlenen Build Schritte sind:
 
 **pdflatex ➞ biber ➞ pdflatex × 2**
 
+### Makefile
+
+Zudem enthält das Projekt eine `MAKEFILE`, womit das PDF erstellt werden kann.
+
 ### DOCX Export
 
 Für die Rechtschreibungsüberprüfung in Word, oder einfach zur Korrektur eines
