@@ -81,3 +81,37 @@ Neben den Text-Variablen gibt es noch 2 Boolean Variablen, die bestimmte Inhalte
 --- | ---
 `\secondsubmission` | Ein-/Ausblenden des zweiten Gutachters
 `\confidential` | Ein-/Ausblenden des Sperrvermerks
+
+
+## Build Prozess
+
+Das Projekt kann mit `pdflatex` und `biber` kompiliert werden. Für VS Code mit
+der Erweiterung `latex-workshop` sind bereits alle Build Parameter gesetzt.
+
+Je nach dem ob shell-escape benötigt wird `pdflatex` mit folgenden
+Parametern aufgerufen:
+
+- `--shell-escape`
+- `-synctex=1`
+- `-interaction=nonstopmode`
+- `-file-line-error`
+
+Die kompletten Befehle können auch [hier](.vscode/settings.json) nachgeschaut
+werden.
+
+Die empfohlenen Build Schritte sind:
+
+**pdflatex ➞ biber ➞ pdflatex × 2**
+
+### DOCX Export
+
+Für die Rechtschreibungsüberprüfung in Word, oder einfach zur Korrektur eines
+Dritten kann das Dokument auch als Word-Datei exportiert werden. Dabei werden
+nicht alle Funktionen korrekt abgebildet. Um dem PDF möglichst nahe zu kommen
+beinhaltet das Projekt ein [Template](pandoc-template.docx).
+
+Der Exportbefehel für Pandoc lautet:
+
+```shell
+pandoc main.tex -N --bibliography=bibliography.bib -o main.docx --reference-doc=pandoc-template.docx
+```
